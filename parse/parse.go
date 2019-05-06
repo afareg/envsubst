@@ -66,9 +66,9 @@ Loop:
 			break Loop
 		case itemError:
 			return p.errorf(t.val)
-		case itemVariable:
-			varNode := NewVariable(strings.TrimPrefix(t.val, "$"), p.Env, p.Restrict)
-			p.nodes = append(p.nodes, varNode)
+		//case itemVariable:
+		//	varNode := NewVariable(strings.TrimPrefix(t.val, "$"), p.Env, p.Restrict)
+		//	p.nodes = append(p.nodes, varNode)
 		case itemLeftDelim:
 			if p.peek().typ == itemVariable {
 				n, err := p.action()
@@ -99,8 +99,8 @@ Loop:
 			break Loop
 		case itemError:
 			return nil, p.errorf(t.val)
-		case itemVariable:
-			defaultNode = NewVariable(strings.TrimPrefix(t.val, "$"), p.Env, p.Restrict)
+		//case itemVariable:
+		//	defaultNode = NewVariable(strings.TrimPrefix(t.val, "$"), p.Env, p.Restrict)
 		case itemText:
 			n := NewText(t.val)
 		Text:
